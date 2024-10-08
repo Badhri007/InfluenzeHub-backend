@@ -33,16 +33,6 @@ const getParticularCampaign=async(req,res)=>{
 
 
 
-// const getCampaignsCategoryWise=async(req,res)=>{
-//     const {category,searchText} = req.body;
-//     console.log("Bk:",category);
-
-//     const filt_campaigns=await Campaigns.find({niche:category});
-//     console.log("All Filtered Campaigns:",filt_campaigns);
-//     res.json(filt_campaigns);
-
-// }
-
 const getCampaignsCategoryWise = async (req, res) => {
     const { category, searchText } = req.body;
     console.log("Bk:", category);
@@ -71,8 +61,12 @@ const getCampaignsCategoryWise = async (req, res) => {
     }
   };
   
+const getAllPublicCampaigns = async(req,res)=>{
+    const allCampaigns=await Campaigns.find({visibility:'public'});
+    console.log("All Campaigns:",allCampaigns);
+    res.json(allCampaigns);
+}
 
 
 
-
-module.exports={getAllCampaigns,getParticularCampaign,getCampaignsCategoryWise}
+module.exports={getAllCampaigns,getParticularCampaign,getCampaignsCategoryWise,getAllPublicCampaigns}
